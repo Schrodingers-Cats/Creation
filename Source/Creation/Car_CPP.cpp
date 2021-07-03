@@ -12,10 +12,13 @@ ACar_CPP::ACar_CPP()
 	//Initialize Components
 	CarMesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Car Mesh"));
 	
-	Camera = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Camera"));
-
 	SpringArm = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Camera"));
+	SpringArm->SetupAttachment(RootComponent);
 
+	Camera = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Camera"));
+	Camera->SetupAttachment(SpringArm);
+
+	
 
 	RootComponent = CarMesh;
 }
